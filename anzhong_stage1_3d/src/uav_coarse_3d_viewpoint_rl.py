@@ -3,7 +3,7 @@
 
 This stage keeps the current research decomposition explicit:
 
-1. the partner/coarse-model stage provides a preflight 3D proxy mesh;
+1. the coarse-model stage provides a preflight 3D proxy mesh;
 2. our candidate generator uses surface normals plus partition/cluster logic;
 3. viewpoint selection compares region-aware greedy, SCP/ILP, and PPO
    on the same compressed candidate pool;
