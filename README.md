@@ -46,7 +46,6 @@
 
 - `selection_maskable_ppo.zip`
 
-之所以放在 Release，而不是普通仓库文件里，是因为 GitHub 普通网页上传对大文件限制更严，Release 更适合保存“可直接下载的模型 / 结果包”。
 
 ## 仓库结构
 
