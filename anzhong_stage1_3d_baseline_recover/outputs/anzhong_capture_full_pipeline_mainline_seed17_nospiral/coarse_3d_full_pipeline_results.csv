@@ -1,0 +1,2 @@
+method,selected_views,certified_coverage,forward_overlap_ratio,lateral_overlap_ratio,weakest_structure_part_coverage,average_quality,average_photo_score,incidence_quality,distance_quality,visibility_quality,total_photos,path_length_m,smooth_path_length_m
+Maskable PPO best-of-N path mainline,41,0.9988889098167419,0.9179338023467053,0.6909092125435476,0.9974554707379135,0.8275938630104065,0.8016148174799153,0.8511446118354797,0.9685508012771606,1.0,369,1086.0120469224146,1086.0120469224146

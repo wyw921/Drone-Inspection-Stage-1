@@ -1,0 +1,10 @@
+{
+  "candidate_views": 384,
+  "targets": 900,
+  "required_views_per_target": 1,
+  "region_counts": {
+    "0.0": 18,
+    "2.0": 357,
+    "3.0": 9
+  }
+}
