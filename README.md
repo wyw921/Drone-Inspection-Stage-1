@@ -1,86 +1,102 @@
 # Drone Inspection Stage 1
 
-这是一个面向无人机巡检与三维重建的研究型代码仓库。
-当前公开整理的主线工作，聚焦于安中大楼及其周边建筑粗模型上的三维视点规划、拍摄组织与安全路径生成。
+Drone Inspection Stage 1 is a research repository for UAV inspection planning and coarse-scene 3D reconstruction workflow design.
+The current public codebase focuses on viewpoint planning, capture scheduling, and safe path generation for the Anzhong building and nearby campus-style coarse models.
 
-## 推荐入口
+## Overview
 
-如果你第一次打开这个仓库，建议直接看下面两个分支：
+The main workflow is:
 
-- `stable/anzhong-stage1-3d-current`
-  当前整理后的稳定快照，适合作为阅读、复现实验和后续继续开发的主入口。
-- `preserve-anzhong-stage1-3d-shot8-v1`
-  保留的早期稳定基线，用来做可回退、可对照版本。
+`candidate viewpoint generation -> Maskable PPO viewpoint selection -> route generation -> export and visualization`
 
-`main` 现在主要作为仓库首页导航，不再假设它一定承载最新可运行主线。
+The current optimization objectives emphasize:
 
-## 当前稳定快照包含什么
+- surface coverage
+- forward overlap within a capture station
+- lateral overlap across neighboring stations
+- quality-oriented viewpoint selection
+- path length and safety-aware routing
 
-稳定快照分支：
+## Recommended Branches
+
+This repository currently exposes two main public branches:
+
+- [`stable/anzhong-stage1-3d-current`](https://github.com/wyw921/Drone-Inspection-Stage-1/tree/stable/anzhong-stage1-3d-current)
+  Current stable snapshot for code reading, reproduction, and extension.
+- [`preserve-anzhong-stage1-3d-shot8-v1`](https://github.com/wyw921/Drone-Inspection-Stage-1/tree/preserve-anzhong-stage1-3d-shot8-v1)
+  Preserved earlier baseline branch retained for comparison.
+
+The `main` branch serves as a public landing page and repository guide.
+
+## Stable Snapshot Contents
+
+The stable snapshot branch includes:
+
+- the current stable `src/` implementation
+- three registered coarse 3D scene models
+- a unified registry and full-pipeline runner
+- representative plots, CSV summaries, and markdown result reports
+
+Stable snapshot link:
 [`stable/anzhong-stage1-3d-current`](https://github.com/wyw921/Drone-Inspection-Stage-1/tree/stable/anzhong-stage1-3d-current)
 
-其中已经整理好：
+## Registered Coarse Models
 
-- 当前稳定版 `src/` 代码
-- 已注册的 3 套可直接使用的粗模型
-- 统一模型注册与运行入口
-- 一组代表性的结果图、CSV 和 Markdown 汇总
-
-## 可直接使用的粗模型
-
-稳定快照里目前整理了 3 套粗模型：
+The stable snapshot currently provides three registered scenes:
 
 - `anzhong_tower_single`
-  安中大楼单体建筑
 - `anzhong_tower_plus_north_teaching`
-  安中大楼 + 北教学楼
 - `anzhong_surrounding_buildings`
-  安中大楼建筑群
 
-模型说明见：
+Model details are documented in:
 [`coarse_models/README.md`](https://github.com/wyw921/Drone-Inspection-Stage-1/blob/stable/anzhong-stage1-3d-current/coarse_models/README.md)
 
-## 运行入口
+## Primary Code Entry Points
 
-如果你想直接列出模型并开始跑：
+The most useful files for orientation are:
+
+- [`src/run_registered_full_pipeline.py`](https://github.com/wyw921/Drone-Inspection-Stage-1/blob/stable/anzhong-stage1-3d-current/src/run_registered_full_pipeline.py)
+- [`src/coarse_model_registry.py`](https://github.com/wyw921/Drone-Inspection-Stage-1/blob/stable/anzhong-stage1-3d-current/src/coarse_model_registry.py)
+- [`src/uav_coarse_3d_full_pipeline.py`](https://github.com/wyw921/Drone-Inspection-Stage-1/blob/stable/anzhong-stage1-3d-current/src/uav_coarse_3d_full_pipeline.py)
+- [`src/uav_coarse_3d_viewpoint_rl.py`](https://github.com/wyw921/Drone-Inspection-Stage-1/blob/stable/anzhong-stage1-3d-current/src/uav_coarse_3d_viewpoint_rl.py)
+- [`src/uav_coarse_3d_planner.py`](https://github.com/wyw921/Drone-Inspection-Stage-1/blob/stable/anzhong-stage1-3d-current/src/uav_coarse_3d_planner.py)
+
+## Method Summary
+
+The current Stage 1 pipeline uses:
+
+1. a relatively large candidate viewpoint pool generated from coarse 3D geometry
+2. a structured Maskable PPO action design:
+   `viewpoint index + shot count + standoff layer`
+3. joint optimization over coverage, local overlap, quality metrics, and route cost
+4. quality tracking through:
+   `mean_quality_normalized`, `quality_good_fraction`, and `weakest_quality_normalized`
+5. safety-aware route connection that prefers direct or Dubins-like connections and falls back to 3D A* when collision or clearance constraints are violated
+6. local turn-radius smoothing rather than whole-path global smoothing
+
+## Getting Started
+
+List registered models:
 
 ```bash
 python3 src/run_registered_full_pipeline.py --list-models
 ```
 
-当前稳定快照里最推荐看的几个文件：
+Run the full pipeline on one registered scene:
 
-- [`src/run_registered_full_pipeline.py`](https://github.com/wyw921/Drone-Inspection-Stage-1/blob/stable/anzhong-stage1-3d-current/src/run_registered_full_pipeline.py)
-- [`src/uav_coarse_3d_full_pipeline.py`](https://github.com/wyw921/Drone-Inspection-Stage-1/blob/stable/anzhong-stage1-3d-current/src/uav_coarse_3d_full_pipeline.py)
-- [`src/uav_coarse_3d_viewpoint_rl.py`](https://github.com/wyw921/Drone-Inspection-Stage-1/blob/stable/anzhong-stage1-3d-current/src/uav_coarse_3d_viewpoint_rl.py)
-- [`src/coarse_model_registry.py`](https://github.com/wyw921/Drone-Inspection-Stage-1/blob/stable/anzhong-stage1-3d-current/src/coarse_model_registry.py)
+```bash
+python3 src/run_registered_full_pipeline.py --model-key anzhong_tower_single
+```
 
-## 当前主线方法概览
+## Baseline and Release
 
-当前这条 Stage 1 主线，从候选生成到路径输出，核心思路是：
-
-1. 基于粗三维模型生成较大的候选视点池，而不是固定少量站点。
-2. 用三层结构化动作做选点决策：`点索引 + shot_count + 距离层`。
-3. 选点评价不只看覆盖率，还联合考虑：
-   认证覆盖率、同站前向重叠、临站旁向重叠、质量指标、路径代价。
-4. 质量部分细化为：
-   `mean_quality_normalized`、`quality_good_fraction`、`weakest_quality_normalized`。
-5. 路径连接优先尝试安全直连或 Dubins-like 连接，不安全时回退到 3D A* 避障。
-6. 路径后处理不做整条全局平滑，只在需要满足转弯半径的位置做局部圆弧化。
-
-## 基线与下载
-
-保留基线分支：
+Preserved baseline branch:
 [`preserve-anzhong-stage1-3d-shot8-v1`](https://github.com/wyw921/Drone-Inspection-Stage-1/tree/preserve-anzhong-stage1-3d-shot8-v1)
 
-对应 Release：
+Reference release:
 [Anzhong Stage1 3D Preserve Fullscale Shot8 V1](https://github.com/wyw921/Drone-Inspection-Stage-1/releases/tag/anzhong-stage1-3d-preserve-fullscale-shot8-v1)
 
-如果你需要我整理时生成的原始备份快照，也保留了这个分支：
+## Notes
 
-- `codex/stable-snapshot-20260717`
-
-## 说明
-
-- 历史实验目录和较大的训练产物仍然保留在本地工作区，不全部放到当前稳定快照分支里。
-- GitHub 上优先保留“可阅读、可运行、可回退”的版本结构。
+- The GitHub version is curated for readability, reproducibility, and rollback-friendly structure.
+- Larger historical training artifacts are intentionally not mirrored in full on the public stable branch.
