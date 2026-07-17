@@ -1,27 +1,41 @@
 # Coarse Models
 
-当前仓库内已经整理好的可直接用粗模型有 3 套：
+This directory contains the coarse 3D scene models currently registered for the Stage 1 pipeline.
 
-- `anzhong_tower_single`
-- `anzhong_tower_plus_north_teaching`
-- `anzhong_surrounding_buildings`
+## Layout
 
-目录约定：
+Each scene is stored under:
 
-- 每套模型都放在 `coarse_models/<model_key>/coarse_model/`
-- 统一包含 `coarse_scene.ply`
-- 如果原始数据提供了结构化场景，也一并保留 `coarse_scene.json`
-- 如果原始数据提供了几何交换格式，也一并保留 `coarse_scene.obj`
+```text
+coarse_models/<model_key>/coarse_model/
+```
 
-推荐入口：
+The directory may include:
 
-- 跑全链路：`python3 src/run_registered_full_pipeline.py --model-key <model_key>`
-- 查看可用模型：`python3 src/run_registered_full_pipeline.py --list-models`
+- `coarse_scene.ply`
+  primary coarse geometry used by the pipeline
+- `coarse_scene.json`
+  structured scene description when available
+- `coarse_scene.obj`
+  exchange geometry when available
 
-当前模型说明：
+## Available Models
 
-| model_key | 用途 | 说明 |
+| model_key | Scene | Notes |
 |---|---|---|
-| `anzhong_tower_single` | 安中大楼单体建筑 | 安中大楼基础粗模型，适合作为单建筑主基线 |
-| `anzhong_tower_plus_north_teaching` | 安中大楼 + 北教学楼 | 21 个原始建筑块、归并后约 4 个主建筑，适合作为 campus 泛化测试 |
-| `anzhong_surrounding_buildings` | 安中大楼建筑群（周边版） | 小型多建筑对照，包含 `Construction lab / Anzhong gate / Computing center / Clock tower`，更接近“安中周边建筑群”而不是“安中 + 北教学楼” |
+| `anzhong_tower_single` | Anzhong tower single building | baseline single-building coarse model |
+| `anzhong_tower_plus_north_teaching` | Anzhong tower plus north teaching buildings | campus-style scene built from 21 original blocks, merged into roughly 4 primary buildings |
+| `anzhong_surrounding_buildings` | Anzhong surrounding buildings | compact multi-building comparison scene including Construction Lab, Anzhong Gate, Computing Center, and Clock Tower |
+
+## Pipeline Entry Points
+
+- List registered scenes:
+  `python3 src/run_registered_full_pipeline.py --list-models`
+- Run the full pipeline on one scene:
+  `python3 src/run_registered_full_pipeline.py --model-key <model_key>`
+
+## Usage Notes
+
+- `anzhong_tower_single` is the main single-building baseline scene.
+- `anzhong_tower_plus_north_teaching` is the preferred multi-building generalization scene.
+- `anzhong_surrounding_buildings` is useful for shorter multi-building comparison runs.
