@@ -1,0 +1,172 @@
+{
+  "scene_name": "anzhong_coarse_demo",
+  "coordinate_system": "local_metric_xy_z_up",
+  "source": {
+    "type": "footprint_and_height",
+    "description": "Approximate footprint reconstructed from the existing Anzhong planning scene"
+  },
+  "buildings": [
+    {
+      "id": "construction_lab",
+      "name": "Construction lab",
+      "footprint": [
+        [
+          18.0,
+          82.0
+        ],
+        [
+          118.0,
+          82.0
+        ],
+        [
+          118.0,
+          104.0
+        ],
+        [
+          18.0,
+          104.0
+        ]
+      ],
+      "base_z": 0.0,
+      "height": 18.0,
+      "horizontal_uncertainty_m": 1.5,
+      "height_uncertainty_m": 2.0
+    },
+    {
+      "id": "anzhong_gate",
+      "name": "Anzhong gate",
+      "footprint": [
+        [
+          28.0,
+          20.0
+        ],
+        [
+          88.0,
+          20.0
+        ],
+        [
+          88.0,
+          78.0
+        ],
+        [
+          76.0,
+          78.0
+        ],
+        [
+          76.0,
+          32.0
+        ],
+        [
+          40.0,
+          32.0
+        ],
+        [
+          40.0,
+          78.0
+        ],
+        [
+          28.0,
+          78.0
+        ]
+      ],
+      "base_z": 0.0,
+      "height": 24.0,
+      "horizontal_uncertainty_m": 1.5,
+      "height_uncertainty_m": 2.5
+    },
+    {
+      "id": "computing_center",
+      "name": "Computing center",
+      "footprint": [
+        [
+          100.0,
+          20.0
+        ],
+        [
+          124.0,
+          20.0
+        ],
+        [
+          124.0,
+          64.0
+        ],
+        [
+          102.0,
+          64.0
+        ],
+        [
+          102.0,
+          56.0
+        ],
+        [
+          114.0,
+          56.0
+        ],
+        [
+          114.0,
+          48.0
+        ],
+        [
+          102.0,
+          48.0
+        ],
+        [
+          102.0,
+          38.0
+        ],
+        [
+          114.0,
+          38.0
+        ],
+        [
+          114.0,
+          28.0
+        ],
+        [
+          100.0,
+          28.0
+        ]
+      ],
+      "base_z": 0.0,
+      "height": 21.0,
+      "horizontal_uncertainty_m": 1.8,
+      "height_uncertainty_m": 2.5
+    },
+    {
+      "id": "clock_tower",
+      "name": "Clock tower",
+      "footprint": [
+        [
+          100.0,
+          70.0
+        ],
+        [
+          108.0,
+          70.0
+        ],
+        [
+          108.0,
+          78.0
+        ],
+        [
+          100.0,
+          78.0
+        ]
+      ],
+      "base_z": 0.0,
+      "height": 30.0,
+      "horizontal_uncertainty_m": 1.2,
+      "height_uncertainty_m": 3.0
+    }
+  ],
+  "model_role": "preflight_planning_proxy_not_final_reconstruction",
+  "units": "meter",
+  "mesh": {
+    "vertices": 168,
+    "triangles": 96,
+    "obj": "/Users/wyw/Documents/无人机巡检/tmp/anzhong_coarse_scene_multibuilding/coarse_scene.obj",
+    "ply": "/Users/wyw/Documents/无人机巡检/tmp/anzhong_coarse_scene_multibuilding/coarse_scene.ply",
+    "watertight_by_construction": true,
+    "outward_wall_normals": true
+  }
+}

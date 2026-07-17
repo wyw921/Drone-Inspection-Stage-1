@@ -1,0 +1,4 @@
+model_key,scene_type,raw_building_entries,primary_building_groups,default_max_targets,notes
+anzhong_tower_single,single,5,1,900,Anzhong tower single-building baseline
+anzhong_tower_plus_north_teaching,campus,21,4,900,Anzhong tower plus north teaching buildings campus scene
+anzhong_surrounding_buildings,multi,4,4,900,Anzhong surrounding buildings comparison scene

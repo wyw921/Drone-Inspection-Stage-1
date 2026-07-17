@@ -1,0 +1,214 @@
+{
+  "scene_name": "zju_zijingang_anzhong_public_lod1",
+  "coordinate_system": "local_metric_xy_z_up",
+  "source": {
+    "type": "public_footprint_and_estimated_height",
+    "description": "OSM WGS84 footprints cross-checked with ZJU sources and 2013 wind-environment paper",
+    "amap_gcj02_coordinate": [
+      120.083518,
+      30.301373
+    ],
+    "converted_wgs84_coordinate": [
+      120.0786974,
+      30.3036449
+    ],
+    "public_floor_area_m2": 30227.0,
+    "footprint_area_m2": 4382.6,
+    "implied_average_levels": 6.9,
+    "scale_factor": 1.0,
+    "scale_status": "map-derived; not survey verified",
+    "height_model": {
+      "east_west_height_m": 30.0,
+      "north_south_height_m": 24.0,
+      "height_difference_m": 6.0,
+      "a_split_y_m": 31.515,
+      "b_split_y_m": 85.382
+    }
+  },
+  "buildings": [
+    {
+      "id": "anzhong_a_ew",
+      "name": "安中A座东西向高段",
+      "footprint": [
+        [
+          81.987,
+          31.515
+        ],
+        [
+          12.202,
+          31.069
+        ],
+        [
+          12.317,
+          12.0
+        ],
+        [
+          32.173,
+          12.123
+        ],
+        [
+          79.728,
+          12.423
+        ],
+        [
+          101.007,
+          12.557
+        ],
+        [
+          100.883,
+          31.515
+        ]
+      ],
+      "base_z": 0.0,
+      "height": 30.0,
+      "horizontal_uncertainty_m": 2.5,
+      "height_uncertainty_m": 3.0
+    },
+    {
+      "id": "anzhong_a_ns",
+      "name": "安中A座南北向低段",
+      "footprint": [
+        [
+          81.987,
+          56.216
+        ],
+        [
+          81.987,
+          31.515
+        ],
+        [
+          100.883,
+          31.515
+        ],
+        [
+          100.882,
+          31.626
+        ],
+        [
+          100.882,
+          34.175
+        ],
+        [
+          100.843,
+          56.339
+        ]
+      ],
+      "base_z": 0.0,
+      "height": 24.0,
+      "horizontal_uncertainty_m": 2.5,
+      "height_uncertainty_m": 3.0
+    },
+    {
+      "id": "anzhong_b_ew",
+      "name": "安中B座东西向高段",
+      "footprint": [
+        [
+          100.805,
+          85.382
+        ],
+        [
+          100.805,
+          85.493
+        ],
+        [
+          100.68,
+          104.562
+        ],
+        [
+          79.536,
+          104.429
+        ],
+        [
+          31.462,
+          104.128
+        ],
+        [
+          12.0,
+          104.006
+        ],
+        [
+          12.112,
+          85.382
+        ],
+        [
+          81.987,
+          85.382
+        ]
+      ],
+      "base_z": 0.0,
+      "height": 30.0,
+      "horizontal_uncertainty_m": 2.5,
+      "height_uncertainty_m": 3.0
+    },
+    {
+      "id": "anzhong_b_ns",
+      "name": "安中B座南北向低段",
+      "footprint": [
+        [
+          100.805,
+          85.382
+        ],
+        [
+          81.987,
+          85.382
+        ],
+        [
+          81.987,
+          61.627
+        ],
+        [
+          100.834,
+          61.627
+        ],
+        [
+          100.805,
+          83.991
+        ]
+      ],
+      "base_z": 0.0,
+      "height": 24.0,
+      "horizontal_uncertainty_m": 2.5,
+      "height_uncertainty_m": 3.0
+    },
+    {
+      "id": "anzhong_link",
+      "name": "安中大楼连接体",
+      "footprint": [
+        [
+          81.987,
+          61.627
+        ],
+        [
+          81.987,
+          56.216
+        ],
+        [
+          100.843,
+          56.339
+        ],
+        [
+          100.843,
+          59.044
+        ],
+        [
+          100.834,
+          61.627
+        ]
+      ],
+      "base_z": 0.0,
+      "height": 10.0,
+      "horizontal_uncertainty_m": 2.5,
+      "height_uncertainty_m": 3.0
+    }
+  ],
+  "model_role": "preflight_planning_proxy_not_final_reconstruction",
+  "units": "meter",
+  "mesh": {
+    "vertices": 170,
+    "triangles": 96,
+    "obj": "C:\\Users\\ys253\\Documents\\暑期研究\\agentic_inspection_pipeline\\outputs\\anzhong_height_constrained_v5\\coarse_model\\coarse_scene.obj",
+    "ply": "C:\\Users\\ys253\\Documents\\暑期研究\\agentic_inspection_pipeline\\outputs\\anzhong_height_constrained_v5\\coarse_model\\coarse_scene.ply",
+    "watertight_by_construction": true,
+    "outward_wall_normals": true
+  }
+}
